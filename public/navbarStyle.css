@@ -1,0 +1,30 @@
+.nav-link {
+  color: #f9f9f9;
+  margin-left: 1vw;
+}
+.nav-link:hover {
+  color: #f9f9f9;
+}
+.nav-link.active {
+  color: #f9f9f9 !important;
+  font-weight: bold;
+}
+.style-button {
+  background-color: wheat;
+  border: none;
+  color: #171717;
+}
+.style-brand {
+  color: #f9f9f9;
+}
+.style-brand:hover {
+  color: #f9f9f9;
+}
+@media (max-width: 575px) {
+  .style-brand {
+    color: wheat;
+  }
+  .style-brand:hover {
+    color: wheat;
+  }
+}

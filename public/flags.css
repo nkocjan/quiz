@@ -1,0 +1,30 @@
+body {
+  background-color: #171717;
+  color: #f9f9f9;
+}
+.text-align-center {
+  text-align: center;
+}
+.style-border {
+  border: 1px solid wheat;
+  border-radius: 20px;
+}
+.style-border-right {
+  border-right: wheat 1px solid;
+}
+.krajHOV:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .style-border-right {
+    border-right: none;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 576px) {
+  .style-border-right {
+    border-right: none;
+    margin-top: 10px;
+  }
+}

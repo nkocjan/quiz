@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Stolice Europy</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../public/stoliceeuropy.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../public/navbarStyle.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm mb-5">
+      <div class="container-fluid">
+        <a
+          class="navbar-brand style-brand"
+          href="/">
+          <img src="../public/logo.png" />
+        </a>
+        <button
+          class="navbar-toggler style-button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-label="Expand Navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="nav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                href="tabliczkamnozenia"
+                class="nav-link"
+                aria-current="page">
+                Tabliczka mnożenia
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="stolice"
+                class="nav-link active">
+                Stolice Europy
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="geografia"
+                class="nav-link">
+                Geografia ogólna
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="flags"
+                class="nav-link">
+                Flagi Świata
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="#"
+                class="nav-link">
+                Comeing Soon ...
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div
+      style="display: none"
+      id="ilosc">
+      <%= locals.ilosc %>
+    </div>
+    <div
+      style="display: none"
+      id="dane">
+      <%- JSON.stringify(locals.dane) %>
+    </div>
+    <div class="container-sm text-align-center mb-5">
+      <div class="row">
+        <div class="col-11 col-md-5 style-border mx-auto">
+          <h4>Quiz otwarty</h4>
+          <div class="row mt-5">
+            <div class="col">
+              <input
+                type="number"
+                id="liczbaPytanOpen"
+                placeholder="wybierz liczbę pytań" />
+              <button
+                type="button"
+                id="startOpen"
+                class="ml-3 mt-1">
+                Start
+              </button>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-12 col-lg-2 mt-1">
+              <span id="krajDoZgadnieciaOpen">Polska</span>
+            </div>
+            <div class="col-12 col-lg-6 mt-1">
+              <input
+                type="text"
+                placeholder="stolica"
+                id="stolicaOpen"
+                disabled />
+            </div>
+            <div class="col-12 col-lg-4 mt-1">
+              <button
+                disabled
+                id="wyslijOdpowiedzOpen">
+                Odpowiedz
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col mt-4"
+              id="alertCloseInfo"></div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">Punkty:</div>
+            <div class="col">
+              <span id="zdobytePunktyOpen"></span>
+              <span id="znakOpen">
+                Wybierz liczbę pytań i wciśnij start aby rozpoacząć
+              </span>
+              <span id="maxPunktyOpen"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-12 mb-5"></div>
+        <div class="col-11 col-md-5 style-border mx-auto">
+          <h4>Quiz zamknięty</h4>
+          <div class="row mt-5">
+            <div class="col">
+              <input
+                type="number"
+                placeholder="wybierz liczbę pytań"
+                id="liczbaPytanClose" />
+              <button
+                type="button"
+                id="startClose"
+                class="ml-3">
+                Start
+              </button>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col"><span id="krajClose">Polska</span></div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-6 col-md-3 style-flex-column">
+              <label
+                for="one1"
+                id="one">
+                Warszawa
+              </label>
+              <input
+                type="radio"
+                name="stolica"
+                id="one1" />
+            </div>
+            <div class="col-6 col-md-3 style-flex-column">
+              <label
+                for="two1"
+                id="two">
+                Lizbona
+              </label>
+              <input
+                type="radio"
+                name="stolica"
+                id="two1" />
+            </div>
+            <div class="col-6 col-md-3 mt-1 style-flex-column">
+              <label
+                for="three1"
+                id="three">
+                Madryt
+              </label>
+              <input
+                type="radio"
+                name="stolica"
+                id="three1" />
+            </div>
+            <div class="col-6 col-md-3 mt-1 style-flex-column">
+              <label
+                for="four1"
+                id="four">
+                Rejkiavik
+              </label>
+              <input
+                type="radio"
+                name="stolica"
+                id="four1" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mt-3">
+              <button
+                id="wyslijOdpowiedzClose"
+                disabled>
+                Odpowiedz
+              </button>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col">Punkty:</div>
+            <div class="col">
+              <span id="punktyZdobyteClose"></span>
+              <span id="srodek">
+                Wybierz liczbę pytań i wciśnij start aby rozpocząć
+              </span>
+              <span id="punktyMaxOpen"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // ### GŁÓWNE DANE
+      const ilosc = parseInt(document.getElementById("ilosc").textContent);
+      const tablicaDIV = document.getElementById("dane").textContent;
+      const tablica = JSON.parse(tablicaDIV);
+
+      // ### GRA Z PYTANIAMI ZAMKNIĘTYMI
+      const liczbaPytanCloseDIV = document.getElementById("liczbaPytanClose");
+      const startClose = document.getElementById("startClose");
+      const krajClose = document.getElementById("krajClose");
+      const one = document.getElementById("one");
+      const two = document.getElementById("two");
+      const three = document.getElementById("three");
+      const four = document.getElementById("four");
+      const odpowiedzClose = document.getElementById("wyslijOdpowiedzClose");
+      const punktyZdobyteClose = document.getElementById("punktyZdobyteClose");
+      const srodek = document.getElementById("srodek");
+      const punktyMaxOpen = document.getElementById("punktyMaxOpen");
+      var radioButton = document.getElementsByName("stolica");
+      let y;
+      let pointsClose = 0;
+      let iteracjaClose = 0;
+      let liczbaPytanClose;
+      let poprawnaOdpowiedz;
+
+      function generujPytanieClose() {
+        if (iteracjaClose >= liczbaPytanClose) {
+          punktyZdobyteClose.innerHTML = pointsClose;
+          odpowiedzClose.disabled = true;
+          startClose.disabled = false;
+          liczbaPytanCloseDIV.disabled = false;
+          setTimeout(() => {
+            alert(
+              "Brawo, zdobyłeś " +
+                pointsClose +
+                " punkty na " +
+                liczbaPytanClose +
+                " możliwych"
+            );
+          });
+          startClose.textContent = "Zacznij ponownie";
+          liczbaPytanCloseDIV.value = 0;
+        } else {
+          punktyZdobyteClose.innerHTML = pointsClose;
+          y = Math.floor(Math.random() * ilosc);
+          let kraj = tablica[y][0];
+          krajClose.innerHTML = kraj;
+          poprawnaOdpowiedz = Math.floor(Math.random() * 4);
+          let odp1 = Math.floor(Math.random() * ilosc);
+          let odp2 = Math.floor(Math.random() * ilosc);
+          let odp3 = Math.floor(Math.random() * ilosc);
+
+          if (poprawnaOdpowiedz == 0) {
+            one.innerHTML = tablica[y][1];
+            two.innerHTML = tablica[odp1][1];
+            three.innerHTML = tablica[odp2][1];
+            four.innerHTML = tablica[odp3][1];
+          } else if (poprawnaOdpowiedz == 1) {
+            one.innerHTML = tablica[odp1][1];
+            two.innerHTML = tablica[y][1];
+            three.innerHTML = tablica[odp2][1];
+            four.innerHTML = tablica[odp3][1];
+          } else if (poprawnaOdpowiedz == 2) {
+            one.innerHTML = tablica[odp2][1];
+            two.innerHTML = tablica[odp1][1];
+            three.innerHTML = tablica[y][1];
+            four.innerHTML = tablica[odp3][1];
+          } else {
+            one.innerHTML = tablica[odp3][1];
+            two.innerHTML = tablica[odp1][1];
+            three.innerHTML = tablica[odp2][1];
+            four.innerHTML = tablica[y][1];
+          }
+        }
+      }
+
+      odpowiedzClose.addEventListener("click", () => {
+        if (radioButton[poprawnaOdpowiedz].checked) {
+          pointsClose++;
+          radioButton[poprawnaOdpowiedz].checked = false;
+          if (poprawnaOdpowiedz == 0) {
+            one.style.color = "green";
+            one.style.fontWeight = 700;
+          } else if (poprawnaOdpowiedz == 1) {
+            two.style.color = "green";
+            two.style.fontWeight = 700;
+          } else if (poprawnaOdpowiedz == 2) {
+            three.style.color = "green";
+            three.style.fontWeight = 700;
+          } else {
+            four.style.color = "green";
+            four.style.fontWeight = 700;
+          }
+        } else {
+          if (radioButton[0].checked) {
+            one.style.color = "red";
+            one.style.fontWeight = 700;
+          } else if (radioButton[1].checked) {
+            two.style.color = "red";
+            two.style.fontWeight = 700;
+          }
+          if (radioButton[2].checked) {
+            three.style.color = "red";
+            three.style.fontWeight = 700;
+          }
+          if (radioButton[3].checked) {
+            four.style.color = "red";
+            four.style.fontWeight = 700;
+          }
+          for (let i = 0; i < 4; i++) {
+            radioButton[i].checked = false;
+          }
+        }
+        iteracjaClose++;
+        setTimeout(() => {
+          one.style.color = "white";
+          one.style.fontWeight = 400;
+          two.style.color = "white";
+          two.style.fontWeight = 400;
+          three.style.color = "white";
+          three.style.fontWeight = 400;
+          four.style.color = "white";
+          four.style.fontWeight = 400;
+          generujPytanieClose();
+        }, 3000);
+      });
+
+      startClose.addEventListener("click", () => {
+        liczbaPytanClose = parseInt(liczbaPytanCloseDIV.value);
+        console.log(liczbaPytanClose);
+        if (liczbaPytanClose > 0 && liczbaPytanClose <= ilosc) {
+          iteracjaClose = 0;
+          pointsClose = 0;
+          liczbaPytanCloseDIV.disabled = true;
+          odpowiedzClose.disabled = false;
+          startClose.disabled = true;
+          punktyZdobyteClose.innerHTML = pointsClose;
+          srodek.innerHTML = " / ";
+          punktyMaxOpen.innerHTML = liczbaPytanClose;
+          generujPytanieClose();
+        } else {
+          alert("Wybierz liczbę pytań od 1 do " + ilosc);
+        }
+      });
+
+      // ### GRA Z PYTANIAMI OTWARTYMI
+      const liczbaPytanOpen = document.getElementById("liczbaPytanOpen");
+      const startOpen = document.getElementById("startOpen");
+      const krajDoZgadnieciaOpen = document.getElementById(
+        "krajDoZgadnieciaOpen"
+      );
+      const stolicaOpen = document.getElementById("stolicaOpen");
+      const wyslijOdpowiedzOpen = document.getElementById(
+        "wyslijOdpowiedzOpen"
+      );
+      const zdobytePunktyOpen = document.getElementById("zdobytePunktyOpen");
+      const znakOpen = document.getElementById("znakOpen");
+      const maxPunktyOpen = document.getElementById("maxPunktyOpen");
+      const alertCloseInfo = document.getElementById("alertCloseInfo");
+      let tableZgadywanie;
+      let points = 0,
+        iteracja = 0;
+      let liczbaPytan, x;
+
+      function generujPytanie() {
+        if (iteracja >= liczbaPytan) {
+          zdobytePunktyOpen.innerHTML = points;
+          setTimeout(() => {
+            alert(
+              "Brawo, zdobyłeś " + points + " na " + liczbaPytan + " punktów"
+            );
+          }, 500);
+          stolicaOpen.disabled = true;
+          wyslijOdpowiedzOpen.disabled = true;
+          liczbaPytanOpen.disabled = false;
+          liczbaPytanOpen.value = 0;
+          startOpen.disabled = false;
+          startOpen.textContent = "Zagraj ponownie";
+
+          return;
+        } else {
+          x = Math.floor(Math.random() * ilosc);
+          console.log(x);
+          krajDoZgadnieciaOpen.innerHTML = tableZgadywanie[x][0];
+        }
+      }
+
+      wyslijOdpowiedzOpen.addEventListener("click", () => {
+        if (stolicaOpen.value == tableZgadywanie[x][1]) {
+          points++;
+          zdobytePunktyOpen.innerHTML = points;
+        } else {
+          alertCloseInfo.innerHTML =
+            "Poprawna odpowiedz: " + tableZgadywanie[x][1];
+          setTimeout(() => {
+            alertCloseInfo.innerHTML = "";
+          }, 3000);
+        }
+        iteracja++;
+        generujPytanie();
+      });
+
+      startOpen.addEventListener("click", () => {
+        tableZgadywanie = tablica;
+        liczbaPytan = parseInt(liczbaPytanOpen.value);
+        if (liczbaPytan <= 0 || liczbaPytan > ilosc) {
+          alert("Wybierz liczbe pytan z zakresu od 1 do " + ilosc);
+        } else {
+          iteracja = 0;
+          points = 0;
+          zdobytePunktyOpen.innerHTML = 0;
+          liczbaPytanOpen.disabled = true;
+          startOpen.disabled = true;
+          stolicaOpen.disabled = false;
+          wyslijOdpowiedzOpen.disabled = false;
+          maxPunktyOpen.innerHTML = liczbaPytan;
+          znakOpen.innerHTML = " / ";
+          generujPytanie();
+        }
+      });
+    </script>
+  </body>
+</html>
