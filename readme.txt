@@ -1,0 +1,1 @@
+Aplikacja node napisana za pomocą javascript. Używany głównie do podstawowej nauki git oraz gitHub

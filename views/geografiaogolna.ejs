@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Geografia ogólna</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../public/geografiaogolna.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../public/navbarStyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm">
+      <div class="container-fluid">
+        <a
+          class="navbar-brand style-brand"
+          href="/">
+          <img src="../public/logo.png" />
+        </a>
+        <button
+          class="navbar-toggler style-button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-label="Expand Navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="nav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                href="tabliczkamnozenia"
+                class="nav-link"
+                aria-current="page">
+                Tabliczka mnożenia
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="stolice"
+                class="nav-link">
+                Stolice Europy
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="geografia"
+                class="nav-link active">
+                Geografia ogólna
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="flags"
+                class="nav-link">
+                Flagi Świata
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="#"
+                class="nav-link">
+                Comeing Soon ...
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container text-align-center mt-5">
+      <div class="row">
+        <div class="col-11 mx-auto col-md-5 style-border">
+          <h6>Większa powierzchnia</h6>
+          <div class="row">
+            <div class="col-2"><button id="start1">Start</button></div>
+            <div class="col-2">
+              <button
+                id="restart1"
+                disabled>
+                Restart
+              </button>
+            </div>
+            <div class="col-4">Punkty:</div>
+            <div class="col-4">
+              <span id="punktyZdobyte1"></span>
+              <span id="srodek1"></span>
+              <span id="maxPunkty1"></span>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div
+              class="col-6 style-click"
+              id="odpClick11">
+              <span id="nazwaKraju11">Polska</span>
+              <br />
+              <span
+                class="fi fi-pl"
+                style="font-size: 10vw"
+                id="krajspan11"></span>
+              <br />
+              <span id="powierzchniaKraj11">Wciśnij</span>
+            </div>
+            <div
+              class="col-6 style-click"
+              id="odpClick12">
+              <span id="nazwaKraju12">Polska</span>
+              <br />
+              <span
+                class="fi fi-pl"
+                style="font-size: 10vw"
+                id="krajspan12"></span>
+              <br />
+              <span id="powierzchniaKraj12">Start</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-5"></div>
+        <div class="col-11 mx-auto col-md-5 style-border">
+          <h6>Większa liczba ludności</h6>
+          <div class="row">
+            <div class="col-2"><button id="start2">Start</button></div>
+            <div class="col-2">
+              <button
+                id="restart2"
+                disabled>
+                Restart
+              </button>
+            </div>
+            <div class="col-4">Punkty:</div>
+            <div class="col-4">
+              <span id="punktyZdobyte2"></span>
+              <span id="srodek2"></span>
+              <span id="maxPunkty2"></span>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div
+              class="col-6 style-click"
+              id="odpClick21">
+              <span id="nazwaKraju21">Polska</span>
+              <br />
+              <span
+                class="fi fi-pl"
+                style="font-size: 10vw"
+                id="krajspan21"></span>
+              <br />
+              <span id="powierzchniaKraj21">Wciśnij</span>
+            </div>
+            <div
+              class="col-6 style-click"
+              id="odpClick22">
+              <span id="nazwaKraju22">Polska</span>
+              <br />
+              <span
+                class="fi fi-pl"
+                style="font-size: 10vw"
+                id="krajspan22"></span>
+              <br />
+              <span id="powierzchniaKraj22">Start</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // ### SKRYPT CZĘŚĆ 1
+      const start1 = document.getElementById("start1");
+      const restart1 = document.getElementById("restart1");
+      const punktyZdobyte1 = document.getElementById("punktyZdobyte1");
+      const srodek1 = document.getElementById("srodek1");
+      const maxPunkty1 = document.getElementById("maxPunkty1");
+      const nazwaKraju11 = document.getElementById("nazwaKraju11");
+      const nazwaKraju12 = document.getElementById("nazwaKraju12");
+      const odpClick11 = document.getElementById("odpClick11");
+      const odpClick12 = document.getElementById("odpClick12");
+      const powierzchniaKraj11 = document.getElementById("powierzchniaKraj11");
+      const powierzchniaKraj12 = document.getElementById("powierzchniaKraj12");
+      var krajspan11 = document.getElementById("krajspan11");
+      var krajspan12 = document.getElementById("krajspan12");
+      const panstwa = loadDane();
+
+      const iloscPanstw = panstwa.length;
+      let points1 = 0;
+      let maxPoints1 = 0;
+      let gameOn1 = false;
+      let kraj11, kraj12, poprawnaOdp1;
+      let waitingTime = false;
+
+      function generujPytanie1() {
+        krajspan11.style.boxShadow = "0px 0px 28px 14px rgba(243, 182, 22, 0)";
+        krajspan12.style.boxShadow = "0px 0px 28px 14px rgba(243, 182, 22, 0)";
+        punktyZdobyte1.innerHTML = points1;
+        maxPunkty1.innerHTML = maxPoints1;
+        kraj11 = Math.floor(Math.random() * iloscPanstw);
+        kraj12 = Math.floor(Math.random() * iloscPanstw);
+        if (panstwa[kraj11][2] > panstwa[kraj12][2]) {
+          poprawnaOdp1 = kraj11;
+        } else {
+          poprawnaOdp1 = kraj12;
+        }
+        nazwaKraju11.innerHTML = panstwa[kraj11][0];
+        nazwaKraju12.innerHTML = panstwa[kraj12][0];
+        krajspan11.classList.add(panstwa[kraj11][3]);
+        krajspan12.classList.add(panstwa[kraj12][3]);
+      }
+
+      odpClick11.addEventListener("click", () => {
+        if (gameOn1 && !waitingTime) {
+          if (poprawnaOdp1 == kraj11) {
+            points1++;
+            krajspan11.style.boxShadow =
+              "0px 0px 28px 14px rgba(243, 182, 22, 1)";
+          } else {
+            krajspan11.style.boxShadow =
+              "0px 0px 28px 14px  rgba(255, 0, 0, 1)";
+          }
+          powierzchniaKraj11.innerHTML = panstwa[kraj11][2];
+          powierzchniaKraj12.innerHTML = panstwa[kraj12][2];
+          waitingTime = true;
+          setTimeout(() => {
+            powierzchniaKraj11.innerHTML = "?";
+            powierzchniaKraj12.innerHTML = "?";
+            maxPoints1++;
+            krajspan11.classList.remove(panstwa[kraj11][3]);
+            krajspan12.classList.remove(panstwa[kraj12][3]);
+            waitingTime = false;
+            generujPytanie1();
+          }, 3000);
+        }
+      });
+      odpClick12.addEventListener("click", () => {
+        if (gameOn1 && !waitingTime) {
+          if (poprawnaOdp1 == kraj12) {
+            points1++;
+            krajspan12.style.boxShadow =
+              "0px 0px 28px 14px rgba(243, 182, 22, 1)";
+          } else {
+            krajspan12.style.boxShadow =
+              "0px 0px 28px 14px  rgba(255, 0, 0, 1)";
+          }
+          powierzchniaKraj11.innerHTML = panstwa[kraj11][2];
+          powierzchniaKraj12.innerHTML = panstwa[kraj12][2];
+          waitingTime = true;
+          setTimeout(() => {
+            powierzchniaKraj11.innerHTML = "";
+            powierzchniaKraj12.innerHTML = "";
+            maxPoints1++;
+            krajspan11.classList.remove(panstwa[kraj11][3]);
+            krajspan12.classList.remove(panstwa[kraj12][3]);
+            waitingTime = false;
+            generujPytanie1();
+          }, 3000);
+        }
+      });
+
+      start1.addEventListener("click", () => {
+        start1.disabled = true;
+        restart1.disabled = false;
+        maxPunkty1.innerHTML = 0;
+        punktyZdobyte1.innerHTML = 0;
+        srodek1.innerHTML = " / ";
+        krajspan11.classList.remove("fi-pl");
+        krajspan12.classList.remove("fi-pl");
+        gameOn1 = true;
+        generujPytanie1();
+      });
+
+      // ### SKRYPT CZĘŚĆ DRUGA
+
+      const start2 = document.getElementById("start2");
+      const restart2 = document.getElementById("restart2");
+      const punktyZdobyte2 = document.getElementById("punktyZdobyte2");
+      const srodek2 = document.getElementById("srodek2");
+      const maxPunkty2 = document.getElementById("maxPunkty2");
+      const nazwaKraju21 = document.getElementById("nazwaKraju21");
+      const nazwaKraju22 = document.getElementById("nazwaKraju22");
+      const odpClick21 = document.getElementById("odpClick21");
+      const odpClick22 = document.getElementById("odpClick22");
+      const powierzchniaKraj21 = document.getElementById("powierzchniaKraj21");
+      const powierzchniaKraj22 = document.getElementById("powierzchniaKraj22");
+      var krajspan21 = document.getElementById("krajspan21");
+      var krajspan22 = document.getElementById("krajspan22");
+
+      let points2 = 0;
+      let maxPoints2 = 0;
+      let gameOn2 = false;
+      let kraj21, kraj22, poprawnaOdp2;
+      let waitingTime2 = false;
+
+      function generujPytanie2() {
+        krajspan21.style.boxShadow = "0px 0px 50px 21px rgba(243, 182, 22, 0)";
+        krajspan22.style.boxShadow = "0px 0px 50px 21px rgba(243, 182, 22, 0)";
+        punktyZdobyte2.innerHTML = points2;
+        maxPunkty2.innerHTML = maxPoints2;
+        kraj21 = Math.floor(Math.random() * iloscPanstw);
+        kraj22 = Math.floor(Math.random() * iloscPanstw);
+        if (panstwa[kraj21][1] > panstwa[kraj22][1]) {
+          poprawnaOdp2 = kraj21;
+        } else {
+          poprawnaOdp2 = kraj22;
+        }
+        nazwaKraju21.innerHTML = panstwa[kraj21][0];
+        nazwaKraju22.innerHTML = panstwa[kraj22][0];
+        krajspan21.classList.add(panstwa[kraj21][3]);
+        krajspan22.classList.add(panstwa[kraj22][3]);
+      }
+
+      odpClick21.addEventListener("click", () => {
+        if (gameOn2 && !waitingTime2) {
+          if (poprawnaOdp2 == kraj21) {
+            points2++;
+            krajspan21.style.boxShadow =
+              "0px 0px 28px 14px rgba(243, 182, 22, 1)";
+          } else {
+            krajspan21.style.boxShadow =
+              "0px 0px 28px 14px  rgba(255, 0, 0, 1)";
+          }
+          powierzchniaKraj21.innerHTML = panstwa[kraj21][1];
+          powierzchniaKraj22.innerHTML = panstwa[kraj22][1];
+          waitingTime = true;
+          setTimeout(() => {
+            powierzchniaKraj21.innerHTML = "?";
+            powierzchniaKraj22.innerHTML = "?";
+            maxPoints2++;
+            krajspan21.classList.remove(panstwa[kraj21][3]);
+            krajspan22.classList.remove(panstwa[kraj22][3]);
+            waitingTime2 = false;
+            generujPytanie2();
+          }, 3000);
+        }
+      });
+      odpClick22.addEventListener("click", () => {
+        if (gameOn2 && !waitingTime2) {
+          if (poprawnaOdp2 == kraj22) {
+            points2++;
+            krajspan22.style.boxShadow =
+              "0px 0px 28px 14px rgba(243, 182, 22, 1)";
+          } else {
+            krajspan22.style.boxShadow =
+              "0px 0px 28px 14px  rgba(255, 0, 0, 1)";
+          }
+          powierzchniaKraj21.innerHTML = panstwa[kraj21][1];
+          powierzchniaKraj22.innerHTML = panstwa[kraj22][1];
+          waitingTime2 = true;
+          setTimeout(() => {
+            powierzchniaKraj21.innerHTML = "";
+            powierzchniaKraj22.innerHTML = "";
+            maxPoints2++;
+            krajspan21.classList.remove(panstwa[kraj21][3]);
+            krajspan22.classList.remove(panstwa[kraj22][3]);
+            waitingTime2 = false;
+            generujPytanie2();
+          }, 3000);
+        }
+      });
+
+      start2.addEventListener("click", () => {
+        start2.disabled = true;
+        restart2.disabled = false;
+        maxPunkty2.innerHTML = 0;
+        punktyZdobyte2.innerHTML = 0;
+        srodek2.innerHTML = " / ";
+        krajspan21.classList.remove("fi-pl");
+        krajspan22.classList.remove("fi-pl");
+        gameOn2 = true;
+        generujPytanie2();
+      });
+
+      // ### DANE PAŃSTW
+      function loadDane() {
+        const table = [
+          ["Polska", 37698294, 312696, "fi-pl"],
+          ["Indie", 1411415000, 3287263, "fi-in"],
+          ["Chiny", 1410539758, 9596961, "fi-cn"],
+          ["USA", 337341000, 9833517, "fi-us"],
+          ["Indonezja", 227329000, 1910931, "fi-id"],
+          ["Pakistan", 242923000, 881913, "fi-pk"],
+          ["Nigeria", 225082000, 923768, "fi-ng"],
+          ["Brazylia", 217240000, 8515770, "fi-br"],
+          ["Bangladesz", 165650000, 147570, "fi-bd"],
+          ["Rosja", 142021000, 17098242, "fi-ru"],
+          ["Meksyk", 129150, 1964375, "fi-mx"],
+          ["Japonia", 124214000, 377975, "fi-jp"],
+          ["Filipiny", 115000000, 300000, "fi-ph"],
+          ["Etiopia", 113650000, 1104300, "fi-et"],
+          ["Egipt", 107770000, 1002450, "fi-eg"],
+          ["Wietnam", 103808000, 331212, "fi-vn"],
+          ["Iran", 86750000, 1648195, "fi-ir"],
+          ["Niemcy", 83231900, 357022, "fi-de"],
+          ["Turcja", 87492900, 783356, "fi-tr"],
+          ["Tajlandia", 69950000, 513120, "fi-th"],
+          ["Francja", 67686700, 551695, "fi-fr"],
+          ["WielkaBrytania", 67704300, 243610, "fi-gb"],
+          ["Wlochy", 60375700, 301340, "fi-it"],
+          ["Kenia", 58607000, 580367, "fi-ke"],
+          ["Hiszpania", 47100396, 505992, "fi-es"],
+          ["KoreaPol", 5121790, 120540, "fi-kr"],
+          ["Kolumbia", 51515300, 1141748, "fi-co"],
+          ["Argentyna", 45376763, 2780400, "fi-ar"],
+          ["Ukraina", 41295400, 603500, "fi-ua"],
+          ["Irak", 42233600, 438317, "fi-iq"],
+          ["Algieria", 44845000, 2381741, "fi-dz"],
+          ["Kanada", 38600700, 9976140, "fi-ca"],
+          ["Afganistan", 39655000, 652864, "fi-af"],
+          ["Maroko", 36910560, 446550, "fi-ma"],
+          ["Peru", 33469600, 1285216, "fi-pe"],
+          ["Australia", 25815700, 7692024, "fi-au"],
+          ["Rumunia", 19116400, 238397, "fi-ro"],
+          ["Chile", 19234000, 756950, "fi-cl"],
+          ["Holandia", 17564700, 41526, "fi-nl"],
+          ["Senegal", 18768500, 196722, "fi-sn"],
+          ["Belgia", 11632213, 30528, "fi-be"],
+          ["Grecja", 10367400, 131957, "fi-gr"],
+          ["Czechy", 10711900, 78867, "fi-cz"],
+          ["Izrael", 9058700, 20770, "fi-il"],
+          ["Austria", 8915375, 83879, "fi-at"],
+          ["Slowacja", 5450421, 49037, "fi-sk"],
+          ["Litwa", 2652270, 65300, "fi-lt"],
+          ["Albania", 2877797, 28748, "fi-al"],
+          ["Norwegia", 5503454, 1487290, "fi-no"],
+          ["Szwecja", 10430313, 450295, "fi-se"],
+          ["Malediwy", 521000, 298, "fi-mv"],
+          ["Czarnogora", 621438, 13812, "fi-me"],
+          ["Portugalia", 10295909, 92212, "fi-pt"],
+          ["Nepal", 29996012, 147516, "fi-np"],
+          ["Ghana", 31072945, 238535, "fi-gh"],
+          ["Yemen", 31136700, 527968, "fi-ye"],
+          ["Mjanma", 54817910, 676578, "fi-mm"],
+          ["Wenezuela", 28887118, 912050, "fi-ve"],
+          ["Mozambik", 35176669, 799380, "fi-mz"],
+          ["Korea_Polnocna", 25727418, 120540, "fi-kp"],
+          ["Malezja", 32808200, 330803, "fi-my"],
+          ["Syria", 17500657, 185180, "fi-sy"],
+          ["Sri_Lanka", 21413249, 65610, "fi-lk"],
+          ["Kamerun", 27556246, 475442, "fi-cm"],
+          ["Holandia", 17564700, 41526, "fi-nl"],
+          ["Chorwacja", 4067500, 56594, "fi-hr"],
+          ["Panama", 4293733, 75420, "fi-pa"],
+          ["Kostaryka", 5148714, 51100, "fi-cr"],
+          ["Szwajcaria", 8704564, 41284, "fi-ch"],
+          ["Irlandia", 4904240, 70273, "fi-ie"],
+          ["Singapur", 5876000, 725.7, "fi-sg"],
+          ["Slowenia", 2079976, 20273, "fi-si"],
+          ["Katar", 2832071, 11586, "fi-qa"],
+          ["Liban", 6825442, 10452, "fi-lb"],
+          ["Cypr", 1207359, 9251, "fi-cy"],
+          ["Luksemburg", 634814, 2586, "fi-lu"],
+          ["Islandia", 343599, 103000, "fi-is"],
+          ["Malta", 514564, 316, "fi-mt"],
+          ["Brunei", 459500, 5765, "fi-bn"],
+          ["Bhutan", 771608, 38394, "fi-bt"],
+          ["Fidzi", 896445, 18274, "fi-fj"],
+          ["Timor_Wschodni", 1324094, 14874, "fi-tl"],
+          ["Lesotho", 2142249, 30355, "fi-ls"],
+          ["Eswatini", 1193148, 17364, "fi-sz"],
+          ["Gambia", 2456138, 11295, "fi-gm"],
+          ["Guinea-Bissau", 2084859, 36125, "fi-gw"],
+          ["Guyana", 786552, 214969, "fi-gy"],
+          ["Surinam", 586632, 163820, "fi-sr"],
+          ["Gujanska_Francuska", 298682, 83203, "fi-gf"],
+          ["Vanuatu", 307145, 12189, "fi-vu"],
+          ["Wyspy_Swietego_Tomasza_i_Ksiazeca", 222159, 964, "fi-st"],
+          ["Kirygistan", 6628500, 199951, "fi-kg"],
+          ["Tadzykistan", 9537645, 143100, "fi-tj"],
+          ["Turkmenistan", 6031187, 491210, "fi-tm"],
+          ["Uzbekistan", 34129000, 448978, "fi-uz"],
+          ["Malawi", 19129952, 118484, "fi-mw"],
+          ["Zambia", 18915187, 752612, "fi-zm"],
+          ["Zimbabwe", 14846455, 390757, "fi-zw"],
+        ];
+        return table;
+      }
+    </script>
+  </body>
+</html>
