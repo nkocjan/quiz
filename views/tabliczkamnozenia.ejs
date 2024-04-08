@@ -57,15 +57,24 @@
 
     <div class="container-sm text-align-center">
       <div class="row">
-        <div class="col-3"><button id="start">Start</button></div>
-        <div class="col-3"><button id="restart">Restart</button></div>
-        <div class="col-3">Czas</div>
-        <div class="col-3">Punkty</div>
+        <div class="col-1"></div>
+        <div class="col-2"><button id="start">Start</button></div>
+        <div class="col-2"><button id="restart">Restart</button></div>
+        <div class="col-2"><input
+                    id="wybranyCzas"
+                    type="number"
+                    placeholder="set time"
+                    style="width: 100px" />
+          </div>
+        <div class="col-2">Czas</div>
+        <div class="col-2">Punkty</div>
+        <div class="col-1"></div>
       </div>
       <div class="row mb-5">
-        <div class="col-6"></div>
-        <div class="col-3" id="czasPozostaly">10</div>
-        <div class="col-3" id="punktyZdobyte">0</div>
+        <div class="col-7"></div>
+        <div class="col-2" id="czasPozostaly">10</div>
+        <div class="col-2" id="punktyZdobyte">0</div>
+        <div class="col-1"></div>
       </div>
       <div class="row style-gra">
         <div class="col-8 style-dzialanie" id="cale-dzialanie">
@@ -86,6 +95,7 @@
       const caledzialanie = document.getElementById("cale-dzialanie");
       const punktyZdobyte = document.getElementById("punktyZdobyte");
       const czasPozostaly = document.getElementById("czasPozostaly");
+      const wybranyCzasDiv = document.getElementById("wybranyCzas");
       let middle = document.getElementById("middle");
       const restart = document.getElementById("restart");
       const caledzialanieString = `
@@ -93,6 +103,7 @@
   <span id='middle'>Wciśnij start aby rozpocząć</span>
   <span id='drugi'></span>
 `;
+      let czasMax;
       let pierwszaLiczba, drugaLiczba;
       let points = 0;
       // ### WYKRYWANIE ZMIANY INPUTA
@@ -111,8 +122,13 @@
         }
       });
 
-      // ### ZAKONCZENIE DZIALANIA GRY
+      // ### START DZIALANIA GRY
       start.addEventListener("click", () => {
+        if(wybranyCzasDiv.value <= 3){
+          alert("Czas musi wynosić powyzej 3 sekund ! ! !");
+          wybranyCzasDiv.value = "";
+          return;
+        }
         pierwszy = document.getElementById("pierwszy");
         drugi = document.getElementById("drugi");
         middle = document.getElementById("middle");
@@ -120,10 +136,12 @@
         middle.innerHTML = " * ";
         restart.disabled = true;
         start.disabled = true;
+        czasMax = wybranyCzasDiv.value;
         pierwszaLiczba = Math.floor(Math.random() * 11);
         drugaLiczba = Math.floor(Math.random() * 11);
         pierwszy.innerHTML = pierwszaLiczba;
         drugi.innerHTML = drugaLiczba;
+        czasPozostaly.innerHTML = czasMax;
 
         // ### KONIEC CZASU
         setTimeout(() => {
@@ -131,12 +149,15 @@
           restart.disabled = false;
           caledzialanie.innerHTML =
             "Koniec czasu, zebrałeś " + points + " punktów";
-        }, 10000);
-        let time = 9;
+        }, czasMax * 1000);
+        let time = czasMax;
 
         // ### INTERWAŁ WYŚWIETLANIA CZASU
         let int = setInterval(() => {
-          czasPozostaly.innerHTML = time;
+          if(time == 0){
+            time = 1;
+          }
+          czasPozostaly.innerHTML = time - 1;
           if (time <= 0) {
             clearInterval(int);
             return;
@@ -149,10 +170,10 @@
       restart.addEventListener("click", () => {
         start.disabled = false;
         caledzialanie.innerHTML = caledzialanieString;
-        punktyZdobyte.innerHTML = 0;
-        czasPozostaly.innerHTML = 10;
+        punktyZdobyte.innerHTML = "0";
+        czasPozostaly.innerHTML = czasMax;
         points = 0;
-        time = 9;
+        time = czasMax;
       });
     </script>
   </body>

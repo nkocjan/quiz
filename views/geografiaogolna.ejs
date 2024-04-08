@@ -206,11 +206,27 @@
       let kraj11, kraj12, poprawnaOdp1;
       let waitingTime = false;
 
+      restart1.addEventListener("click", ()=>{
+        punktyZdobyte1.innerHTML = "0";
+        maxPunkty1.innerHTML = "0";
+        start1.disabled = false;
+        restart1.disabled = true;
+        gameOn1 = false
+        points1 = 0;
+        maxPoints1 = 0;
+        krajspan11.classList.remove(panstwa[kraj11][3]);
+        krajspan12.classList.remove(panstwa[kraj12][3]);
+        krajspan11.classList.add("fi-pl");
+        krajspan12.classList.add("fi-pl");
+        nazwaKraju11.innerHTML = "";
+        nazwaKraju12.innerHTML = "";
+      })
+
       function generujPytanie1() {
         krajspan11.style.boxShadow = "0px 0px 28px 14px rgba(243, 182, 22, 0)";
         krajspan12.style.boxShadow = "0px 0px 28px 14px rgba(243, 182, 22, 0)";
-        punktyZdobyte1.innerHTML = points1;
-        maxPunkty1.innerHTML = maxPoints1;
+        punktyZdobyte1.innerHTML = points1.toString();
+        maxPunkty1.innerHTML = maxPoints1.toString();
         kraj11 = Math.floor(Math.random() * iloscPanstw);
         kraj12 = Math.floor(Math.random() * iloscPanstw);
         if (panstwa[kraj11][2] > panstwa[kraj12][2]) {
@@ -225,22 +241,26 @@
       }
 
       odpClick11.addEventListener("click", () => {
+        restart1.disabled = true;
         if (gameOn1 && !waitingTime) {
-          if (poprawnaOdp1 == kraj11) {
+          maxPoints1++;
+          if (poprawnaOdp1 === kraj11) {
             points1++;
+
             krajspan11.style.boxShadow =
               "0px 0px 28px 14px rgba(243, 182, 22, 1)";
           } else {
             krajspan11.style.boxShadow =
               "0px 0px 28px 14px  rgba(255, 0, 0, 1)";
           }
-          powierzchniaKraj11.innerHTML = panstwa[kraj11][2];
-          powierzchniaKraj12.innerHTML = panstwa[kraj12][2];
+          powierzchniaKraj11.innerHTML = (panstwa[kraj11][2]).toLocaleString('pl-PL') + " km^2";
+          powierzchniaKraj12.innerHTML = (panstwa[kraj12][2]).toLocaleString('pl-PL') + " km^2";
           waitingTime = true;
           setTimeout(() => {
+            restart1.disabled = false;
             powierzchniaKraj11.innerHTML = "?";
             powierzchniaKraj12.innerHTML = "?";
-            maxPoints1++;
+
             krajspan11.classList.remove(panstwa[kraj11][3]);
             krajspan12.classList.remove(panstwa[kraj12][3]);
             waitingTime = false;
@@ -249,8 +269,10 @@
         }
       });
       odpClick12.addEventListener("click", () => {
+        restart1.disabled = true;
         if (gameOn1 && !waitingTime) {
-          if (poprawnaOdp1 == kraj12) {
+          maxPoints1++;
+          if (poprawnaOdp1 === kraj12) {
             points1++;
             krajspan12.style.boxShadow =
               "0px 0px 28px 14px rgba(243, 182, 22, 1)";
@@ -258,13 +280,13 @@
             krajspan12.style.boxShadow =
               "0px 0px 28px 14px  rgba(255, 0, 0, 1)";
           }
-          powierzchniaKraj11.innerHTML = panstwa[kraj11][2];
-          powierzchniaKraj12.innerHTML = panstwa[kraj12][2];
+          powierzchniaKraj11.innerHTML = (panstwa[kraj11][2]).toLocaleString('pl-PL') + " km^2";
+          powierzchniaKraj12.innerHTML = (panstwa[kraj12][2]).toLocaleString('pl-PL') + " km^2";
           waitingTime = true;
           setTimeout(() => {
+            restart1.disabled = false;
             powierzchniaKraj11.innerHTML = "";
             powierzchniaKraj12.innerHTML = "";
-            maxPoints1++;
             krajspan11.classList.remove(panstwa[kraj11][3]);
             krajspan12.classList.remove(panstwa[kraj12][3]);
             waitingTime = false;
@@ -276,8 +298,8 @@
       start1.addEventListener("click", () => {
         start1.disabled = true;
         restart1.disabled = false;
-        maxPunkty1.innerHTML = 0;
-        punktyZdobyte1.innerHTML = 0;
+        maxPunkty1.innerHTML = "0";
+        punktyZdobyte1.innerHTML = "0";
         srodek1.innerHTML = " / ";
         krajspan11.classList.remove("fi-pl");
         krajspan12.classList.remove("fi-pl");
@@ -307,6 +329,22 @@
       let kraj21, kraj22, poprawnaOdp2;
       let waitingTime2 = false;
 
+      restart2.addEventListener("click", ()=>{
+        punktyZdobyte2.innerHTML = "0";
+        maxPunkty2.innerHTML = "0";
+        start2.disabled = false;
+        restart2.disabled = true;
+        gameOn2 = false
+        points2 = 0;
+        maxPoints2 = 0;
+        krajspan21.classList.remove(panstwa[kraj21][3]);
+        krajspan22.classList.remove(panstwa[kraj22][3]);
+        krajspan21.classList.add("fi-pl");
+        krajspan22.classList.add("fi-pl");
+        nazwaKraju21.innerHTML = "";
+        nazwaKraju22.innerHTML = "";
+      })
+
       function generujPytanie2() {
         krajspan21.style.boxShadow = "0px 0px 50px 21px rgba(243, 182, 22, 0)";
         krajspan22.style.boxShadow = "0px 0px 50px 21px rgba(243, 182, 22, 0)";
@@ -326,8 +364,9 @@
       }
 
       odpClick21.addEventListener("click", () => {
+        restart2.disabled = true;
         if (gameOn2 && !waitingTime2) {
-          if (poprawnaOdp2 == kraj21) {
+          if (poprawnaOdp2 === kraj21) {
             points2++;
             krajspan21.style.boxShadow =
               "0px 0px 28px 14px rgba(243, 182, 22, 1)";
@@ -335,10 +374,11 @@
             krajspan21.style.boxShadow =
               "0px 0px 28px 14px  rgba(255, 0, 0, 1)";
           }
-          powierzchniaKraj21.innerHTML = panstwa[kraj21][1];
-          powierzchniaKraj22.innerHTML = panstwa[kraj22][1];
+          powierzchniaKraj21.innerHTML = (panstwa[kraj21][1]).toLocaleString('pl-PL');
+          powierzchniaKraj22.innerHTML = (panstwa[kraj22][1]).toLocaleString('pl-PL');
           waitingTime = true;
           setTimeout(() => {
+            restart2.disabled = false;
             powierzchniaKraj21.innerHTML = "?";
             powierzchniaKraj22.innerHTML = "?";
             maxPoints2++;
@@ -350,8 +390,9 @@
         }
       });
       odpClick22.addEventListener("click", () => {
+        restart2.disabled = true;
         if (gameOn2 && !waitingTime2) {
-          if (poprawnaOdp2 == kraj22) {
+          if (poprawnaOdp2 === kraj22) {
             points2++;
             krajspan22.style.boxShadow =
               "0px 0px 28px 14px rgba(243, 182, 22, 1)";
@@ -359,10 +400,11 @@
             krajspan22.style.boxShadow =
               "0px 0px 28px 14px  rgba(255, 0, 0, 1)";
           }
-          powierzchniaKraj21.innerHTML = panstwa[kraj21][1];
-          powierzchniaKraj22.innerHTML = panstwa[kraj22][1];
+          powierzchniaKraj21.innerHTML = (panstwa[kraj21][1]).toLocaleString('pl-PL');
+          powierzchniaKraj22.innerHTML = (panstwa[kraj22][1]).toLocaleString('pl-PL');
           waitingTime2 = true;
           setTimeout(() => {
+            restart2.disabled = false;
             powierzchniaKraj21.innerHTML = "";
             powierzchniaKraj22.innerHTML = "";
             maxPoints2++;

@@ -316,13 +316,13 @@
         if (radioButton[poprawnaOdpowiedz].checked) {
           pointsClose++;
           radioButton[poprawnaOdpowiedz].checked = false;
-          if (poprawnaOdpowiedz == 0) {
+          if (poprawnaOdpowiedz === 0) {
             one.style.color = "green";
             one.style.fontWeight = 700;
-          } else if (poprawnaOdpowiedz == 1) {
+          } else if (poprawnaOdpowiedz === 1) {
             two.style.color = "green";
             two.style.fontWeight = 700;
-          } else if (poprawnaOdpowiedz == 2) {
+          } else if (poprawnaOdpowiedz === 2) {
             three.style.color = "green";
             three.style.fontWeight = 700;
           } else {
@@ -330,6 +330,19 @@
             four.style.fontWeight = 700;
           }
         } else {
+          if (poprawnaOdpowiedz === 0) {
+            one.style.color = "green";
+            one.style.fontWeight = 700;
+          } else if (poprawnaOdpowiedz === 1) {
+            two.style.color = "green";
+            two.style.fontWeight = 700;
+          } else if (poprawnaOdpowiedz === 2) {
+            three.style.color = "green";
+            three.style.fontWeight = 700;
+          } else {
+            four.style.color = "green";
+            four.style.fontWeight = 700;
+          }
           if (radioButton[0].checked) {
             one.style.color = "red";
             one.style.fontWeight = 700;
