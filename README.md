@@ -1,3 +1,5 @@
+## Aktualna wersja znajduje się w repozytorium node-project !!!
+
 ## General info
 Jest to projekt prostej strony wykorzystujący javascript do dynamicznego rozwiązywania quizów.
 Dla responsywności strony wykorzystany został Bootstrap.
